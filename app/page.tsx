@@ -1,291 +1,371 @@
-'use client';
-import { useEffect, useSyncExternalStore } from 'react';
 import Image from 'next/image';
-import {
-  ArrowUpRight,
-  Moon,
-  Sun,
-  Mountain,
-  Terminal,
-  ShieldCheck,
-  ArrowUp,
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import Script from 'next/script';
 
-const experience = [
-  {
-    company: 'Character.AI',
-    role: 'Software Engineering Intern · Trust & Safety',
-    date: 'Summer 2026',
-    detail:
-      'Go backend services and React tooling for the Trust & Safety team.',
-    mark: 'c.ai',
-  },
-  {
-    company: 'National Football League',
-    role: 'Security Automation Intern',
-    date: '2025–26',
-    detail:
-      'Firewall rule analysis and security tooling that turned manual review work into automated pipelines.',
-    mark: 'NFL',
-  },
-  {
-    company: 'University of Pittsburgh',
-    role: 'Teaching Assistant · Data Structures & Algorithms',
-    date: '2025–present',
-    detail:
-      'Recitations, office hours, and making tricky ideas a little easier to understand.',
-    mark: 'PITT',
-  },
-  {
-    company: 'PittCSC',
-    role: 'Events Coordinator',
-    date: '2025–present',
-    detail:
-      'Tech talks, socials, and company visits for Pitt’s computer science community.',
-    mark: 'CSC',
-  },
-];
-let memoryTheme = false;
-function readTheme() {
-  try {
-    return localStorage.getItem('denys-theme') === 'dark';
-  } catch {
-    return memoryTheme;
-  }
-}
-function subscribeTheme(callback: () => void) {
-  window.addEventListener('storage', callback);
-  window.addEventListener('denys-theme-change', callback);
-  return () => {
-    window.removeEventListener('storage', callback);
-    window.removeEventListener('denys-theme-change', callback);
-  };
-}
 export default function Home() {
-  const dark = useSyncExternalStore(subscribeTheme, readTheme, () => false);
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark);
-  }, [dark]);
-  function toggleTheme() {
-    const next = !dark;
-    memoryTheme = next;
-    try {
-      localStorage.setItem('denys-theme', next ? 'dark' : 'light');
-    } catch {}
-    window.dispatchEvent(new Event('denys-theme-change'));
-  }
   return (
     <>
-      <a className="skip" href="#main">
+      <canvas id="snow" aria-hidden="true"></canvas>
+      <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <div className="notebook" id="top">
-        <header className="topbar">
-          <a className="wordmark" href="#top" aria-label="Denys Tsinyk home">
-            <span className="status-dot" />
-            denys.tsinyk
+      <div className="page" id="top">
+        <header className="site-header">
+          <a className="home-link" href="#top">
+            DT<span>.</span>
           </a>
           <nav aria-label="Main navigation">
+            <a href="#about">about</a>
             <a href="#work">work</a>
             <a href="#projects">projects</a>
-            <a href="#contact">contact</a>
+            <a href="#contact">
+              say hello <span aria-hidden="true">↗</span>
+            </a>
           </nav>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="theme-button"
-            onClick={toggleTheme}
-            aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+          <button
+            className="header-theme"
+            data-theme-toggle
+            aria-label="Toggle color theme"
           >
-            {dark ? <Sun /> : <Moon />}
-          </Button>
+            day / night
+          </button>
         </header>
         <main id="main">
-          <section className="intro" aria-labelledby="intro-title">
-            <div className="eyebrow">
-              COMPUTER SCIENCE / UNIVERSITY OF PITTSBURGH
-            </div>
-            <div className="intro-grid">
-              <div>
-                <h1 id="intro-title">
-                  Hey, I’m Denys<span className="accent">.</span>
-                </h1>
-                <p className="intro-line">
-                  I build things. Ideally, things that
-                  <br className="desktop-break" /> make the internet a little
-                  safer.
+          <div className="hero">
+            <div className="hero-flex">
+              <div className="hero-text">
+                <p className="eyebrow">
+                  SOFTWARE, SAFETY &amp; A LITTLE FRESH AIR
                 </p>
-                <div className="quick-links">
-                  <a href="https://github.com/denystsinyk">
-                    GitHub <ArrowUpRight />
-                  </a>
-                  <a href="https://www.linkedin.com/in/denystsinyk">
-                    LinkedIn <ArrowUpRight />
-                  </a>
-                  <a href="mailto:det82@pitt.edu">
-                    Email <ArrowUpRight />
-                  </a>
-                </div>
+                <h1>
+                  Denys Tsinyk<span className="dot">.</span>
+                </h1>
+                <p className="lede">
+                  I’m studying computer science at Pitt. I like building things
+                  that <span className="mark">keep people safe online</span>,
+                  and being very far from a screen the rest of the time.
+                </p>
+                <p className="now">
+                  <span className="k">summer ’26</span> &mdash; Trust &amp;
+                  Safety @ <b>Character.AI</b>
+                </p>
+                <p className="now">
+                  <span className="k">next</span> &mdash; graduating spring 2027
+                  &middot; open to full-time trust &amp; safety / backend roles
+                </p>
               </div>
-              <figure className="portrait">
+              <figure className="me">
                 <Image
                   unoptimized
-                  src="/me.jpg"
-                  alt="Denys as a kid, dressed in a suit vest"
+                  src="/assets/me.jpg"
+                  alt="Denys as a kid, already in a suit vest"
                   width="728"
                   height="1296"
                 />
-                <figcaption>started early, apparently.</figcaption>
+                <figcaption>preparing for this since ~2011</figcaption>
               </figure>
             </div>
-            <div className="availability">
-              <span className="status-dot" />
-              Graduating spring 2027 <span className="slash">/</span>
-              <span>Open to backend & trust and safety roles</span>
+          </div>
+
+          <div className="divider" aria-hidden="true">
+            <div className="shelf">
+              <Image
+                unoptimized
+                src="/assets/shelf.png"
+                alt="A shelf of my favorite things: a snowboard, computer, bonsai, games, and hiking boots"
+                width="1792"
+                height="742"
+                loading="lazy"
+              />
+              <div className="lamp-beam"></div>
+              <div className="shelf-floor"></div>
             </div>
+            <span className="scribble divider-note">
+              the essentials, more or less
+            </span>
+          </div>
+
+          <section id="about">
+            <h2>About</h2>
+            <p>
+              CS student at the University of Pittsburgh with a business minor.
+              I TA Data Structures &amp; Algorithms and coordinate events for
+              PittCSC, which mostly means convincing companies that students are
+              worth the pizza budget.
+            </p>
+            <p>
+              I keep ending up at the intersection of software and safety
+              &mdash; security automation at{' '}
+              <a className="tip" href="https://www.nfl.com/">
+                the NFL
+                <span className="tip-box" role="tooltip">
+                  firewall rule reviews, automated away
+                </span>
+              </a>
+              , Trust &amp; Safety tooling at
+              <a className="tip" href="https://character.ai/">
+                Character.AI
+                <span className="tip-box" role="tooltip">
+                  Go services + React tools for the T&amp;S team
+                </span>
+              </a>
+              . Go on the backend, React when someone needs to click on things.
+            </p>
+            <p className="offclock-lead">Off the clock &mdash;</p>
+            <ul className="offclock">
+              <li>
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="2.5"
+                    y="9.5"
+                    width="19"
+                    height="5"
+                    rx="2.5"
+                    transform="rotate(-14 12 12)"
+                  />
+                  <path d="M9.2,8.6 L10.4,13.5 M13.6,7.5 L14.8,12.4" />
+                </svg>
+                snowboarding
+              </li>
+              <li>
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12,8.5 L15.3,10.9 L14,14.7 L10,14.7 L8.7,10.9 Z" />
+                  <path d="M12,8.5 V3.5 M15.3,10.9 L20.3,9.5 M14,14.7 L17,19 M10,14.7 L7,19 M8.7,10.9 L3.7,9.5" />
+                </svg>
+                soccer
+              </li>
+              <li>
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2.5,18.5 L8.5,7.5 L12,13.5" />
+                  <path d="M10.5,11 L14.5,5.5 L21.5,18.5" />
+                </svg>
+                trails, runs &amp; new cities
+              </li>
+              <li>
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7,7.5 H17 C19.5,7.5 21.5,9.5 21.5,12 C21.5,14.5 19.5,16.5 17,16.5 C15.5,16.5 14.5,15.5 14,14.5 H10 C9.5,15.5 8.5,16.5 7,16.5 C4.5,16.5 2.5,14.5 2.5,12 C2.5,9.5 4.5,7.5 7,7.5 Z" />
+                  <path d="M7,10.2 V13.8 M5.2,12 H8.8" />
+                  <circle cx="16.6" cy="11" r="0.5" fill="currentColor" />
+                  <circle cx="18.4" cy="13" r="0.5" fill="currentColor" />
+                </svg>
+                Rust &amp; Minecraft
+              </li>
+            </ul>
           </section>
-          <section className="section" id="about">
-            <h2>
-              <span className="section-number">01</span> A little about me{' '}
-              <span className="rule" />
-            </h2>
-            <div className="about-copy">
-              <p>
-                I’m studying computer science with a business minor at{' '}
-                <a href="https://www.pitt.edu/">Pitt</a>. I keep finding myself
-                at the intersection of <mark>software and safety</mark>—from
-                security automation at the NFL to Trust & Safety tooling at
-                Character.AI.
+
+          <section id="work">
+            <h2>Work</h2>
+
+            <article className="job">
+              <div className="job-head">
+                <h3>Character.AI</h3>
+                <span className="leader"></span>
+                <span className="dates">Summer 2026</span>
+              </div>
+              <p className="role">
+                Software Engineering Intern, Trust &amp; Safety
               </p>
               <p>
-                I like useful software, understandable systems, and getting the
-                details right. Go on the backend. React when someone needs to
-                click on things.
+                Go backend services and React tooling for the Trust &amp; Safety
+                team.
+              </p>
+            </article>
+
+            <article className="job">
+              <div className="job-head">
+                <h3>National Football League</h3>
+                <span className="leader"></span>
+                <span className="dates">2025&ndash;26</span>
+              </div>
+              <p className="role">Security Automation Intern</p>
+              <p>
+                Built automation around the league’s security infrastructure
+                &mdash; firewall rule analysis and tooling that turned manual
+                review work into pipelines.
+              </p>
+            </article>
+
+            <article className="job">
+              <div className="job-head">
+                <h3>PittCSC</h3>
+                <span className="leader"></span>
+                <span className="dates">2025&ndash;present</span>
+              </div>
+              <p className="role">Events Coordinator</p>
+              <p>
+                Plan and run events for Pitt’s computer science club &mdash;
+                tech talks, socials, and company visits.
+              </p>
+            </article>
+
+            <article className="job">
+              <div className="job-head">
+                <h3>University of Pittsburgh</h3>
+                <span className="leader"></span>
+                <span className="dates">2025&ndash;present</span>
+              </div>
+              <p className="role">
+                Teaching Assistant, Data Structures &amp; Algorithms
               </p>
               <p>
-                Outside of code, I TA Data Structures & Algorithms and help
-                bring people together at PittCSC. Away from the screen?
-                Preferably somewhere outside.
+                Recitations, office hours, and explaining why the exam wants
+                O(log&nbsp;n).
               </p>
-            </div>
-            <div className="interest-strip">
-              <span>
-                <Terminal /> building useful things
-              </span>
-              <span>
-                <ShieldCheck /> keeping people safe
-              </span>
-              <span>
-                <Mountain /> getting outside
-              </span>
-            </div>
+            </article>
           </section>
-          <section className="section" id="work">
-            <h2>
-              <span className="section-number">02</span> Where I’ve been{' '}
-              <span className="rule" />
-            </h2>
-            <div className="experience">
-              {experience.map((job) => (
-                <article className="job" key={job.company}>
-                  <div className="company-mark" aria-hidden="true">
-                    {job.mark}
-                  </div>
-                  <div className="job-content">
-                    <div className="job-heading">
-                      <h3>{job.company}</h3>
-                      <span className="date">{job.date}</span>
-                    </div>
-                    <p className="role">{job.role}</p>
-                    <p className="detail">{job.detail}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-          <section className="section" id="projects">
-            <h2>
-              <span className="section-number">03</span> A few things I’ve built{' '}
-              <span className="rule" />
-            </h2>
+
+          <section id="projects">
+            <h2>Things I’ve built</h2>
             <a
-              className="project"
+              className="project-card"
               href="https://github.com/denystsinyk/worthit"
             >
-              <div className="project-index">001</div>
+              <span className="project-number">01 /</span>
               <div>
                 <h3>
-                  worthit <ArrowUpRight />
+                  worthit <span aria-hidden="true">↗</span>
                 </h3>
                 <p>
-                  A local dashboard for tracking recurring Amex Gold benefits,
-                  connected to transaction data through Plaid.
+                  A local dashboard that makes recurring Amex benefits easier to
+                  track, using transaction data from Plaid.
                 </p>
-                <div className="tags">
-                  <span>Python</span>
-                  <span>Flask</span>
-                  <span>Plaid</span>
-                </div>
+                <span className="project-tech">Python · Flask · Plaid</span>
               </div>
             </a>
             <a
-              className="project"
+              className="project-card"
               href="https://github.com/denystsinyk/WeatherCli"
             >
-              <div className="project-index">002</div>
+              <span className="project-number">02 /</span>
               <div>
                 <h3>
-                  WeatherCLI <ArrowUpRight />
+                  WeatherCLI <span aria-hidden="true">↗</span>
                 </h3>
                 <p>
-                  Weather for any city, right in your terminal. No ads. No extra
-                  noise.
+                  The weather for any city, right in your terminal. No ads. No
+                  nonsense.
                 </p>
-                <div className="tags">
-                  <span>CLI</span>
-                  <span>Weather</span>
-                </div>
+                <span className="project-tech">
+                  Command-line tools · Weather
+                </span>
               </div>
             </a>
-            <a
-              className="all-projects"
-              href="https://github.com/denystsinyk?tab=repositories"
-            >
-              More on GitHub <ArrowUpRight />
-            </a>
+            <p className="projects-note">small things, made to be useful.</p>
           </section>
-          <section className="section contact" id="contact">
-            <h2>
-              <span className="section-number">04</span> Leave a note{' '}
-              <span className="rule" />
-            </h2>
-            <p>
-              Have something interesting to build, a role in mind,
-              <br className="desktop-break" /> or just want to say hi? My inbox
-              is open.
+
+          <section id="contact">
+            <h2>Let’s talk</h2>
+            <p className="contact-intro">
+              Something interesting to build? A good trail recommendation?
+              <br />
+              My inbox is open.
             </p>
-            <a className="email" href="mailto:det82@pitt.edu">
-              det82@pitt.edu <ArrowUpRight />
-            </a>
-            <div className="contact-links">
-              <a href="https://github.com/denystsinyk">
-                GitHub <ArrowUpRight />
-              </a>
-              <a href="https://www.linkedin.com/in/denystsinyk">
-                LinkedIn <ArrowUpRight />
-              </a>
-            </div>
+            <ul className="contact-list">
+              <li>
+                <span className="label">email</span>
+                <a href="mailto:det82@pitt.edu">det82@pitt.edu</a>
+              </li>
+              <li>
+                <span className="label">github</span>
+                <a href="https://github.com/denystsinyk">
+                  github.com/denystsinyk
+                </a>
+              </li>
+              <li>
+                <span className="label">linkedin</span>
+                <a href="https://www.linkedin.com/in/denystsinyk">
+                  linkedin.com/in/denystsinyk
+                </a>
+              </li>
+            </ul>
           </section>
+
+          <div className="signoff" aria-hidden="true">
+            <svg
+              className="sig"
+              viewBox="0 0 150 66"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M16,10 C12,22 9,34 7,45 M16,10 C34,5 46,16 41,28 C36,39 21,46 8,45" />
+              <path
+                d="M50,36 C57,34 58,28 52,29 C46,30 43,38 47,43 C51,47 58,42 62,37
+               M66,30 C64,35 62,41 61,44 C64,37 69,31 73,32 C76,33 74,41 73,44
+               M79,31 C77,36 76,42 78,44 C81,46 85,38 87,32 C85,42 82,54 75,59 C70,62 68,56 72,51
+               M94,30 C90,31 88,35 91,37 C95,39 96,42 92,44 C89,45 86,44 85,42"
+              />
+              <path className="flourish" d="M6,56 C40,51 80,59 118,51" />
+            </svg>
+          </div>
         </main>
         <footer>
-          <span>© {new Date().getFullYear()} Denys Tsinyk</span>
-          <span className="footer-note">always a work in progress.</span>
-          <a href="#top" aria-label="Back to top">
-            <ArrowUp size={16} />
-          </a>
+          <div className="foot-row">
+            <span>
+              &copy; {new Date().getFullYear()} Denys Tsinyk
+              <svg
+                className="flag"
+                width="14"
+                height="10"
+                viewBox="0 0 14 10"
+                aria-hidden="true"
+              >
+                <rect width="14" height="5" fill="var(--blue)" />
+                <rect y="5" width="14" height="5" fill="var(--gold)" />
+              </svg>
+              handmade in Pittsburgh
+            </span>
+            <div className="footer-controls">
+              <button id="weather-toggle" aria-pressed="false">
+                pause weather
+              </button>
+              <button id="theme-toggle" aria-label="Toggle color theme">
+                <span className="to-dark">night&nbsp;&darr;</span>
+                <span className="to-light">day&nbsp;&uarr;</span>
+              </button>
+            </div>
+          </div>
+          <p className="eof">{'//'} end of run &mdash; lift closes at 5</p>
         </footer>
       </div>
+
+      <Script src="/site.js" strategy="afterInteractive" />
     </>
   );
 }

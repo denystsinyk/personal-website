@@ -20,19 +20,21 @@ npm run lint
 
 ## Edit
 
-- `app/page.tsx`: bio, experience, projects, links, and theme toggle.
+- `app/page.tsx`: bio, experience, projects, and links.
+- `public/site.js`: theme toggle, signature, and weather effects.
+- `public/assets/shelf.png`: original illustrated shelf.
 - `app/globals.css`: responsive layout and light/dark theme.
 - `app/layout.tsx`: page metadata.
-- `public/me.jpg`: existing personal photo.
+- `public/assets/me.jpg`: existing personal photo.
 
-Built with React, TypeScript, Vinext/Vite, Tailwind, and a shadcn Button primitive. No database, contact-form backend, analytics, or API keys are needed. The contact link opens the visitor’s email client.
+Built with React, TypeScript, Vinext/Vite, Tailwind, and the original site’s styles and interactions. No database, contact-form backend, analytics, or API keys are needed. The contact link opens the visitor’s email client.
 
 ## Design and content
 
-Original implementation inspired by the compact, monospace notebook direction of Shreyash Ranjan’s portfolio. No source code or assets were copied from that repository. Personal content and portrait come from Denys’s existing website; project descriptions come from his public GitHub repositories.
+Restores Denys’s original navy-and-gold, serif portfolio with its childhood portrait, illustrated shelf, handwritten signature, snow, clouds, and birds. The friend’s portfolio is only loose inspiration; its design and code are not used. Personal content and portrait come from Denys’s existing website; project descriptions come from his public GitHub repositories.
 
 Before publishing, confirm the Character.AI internship wording, graduation date, and the roles currently labeled “present.” The previous site had no resume PDF, so no broken download link is included. Social previews retain the existing public portrait URL; replace it with the new deployment’s asset URL when publishing.
 
 ## Deployment
 
-No deployment is configured or enabled. This repository was created as private. The generated `.openai/hosting.json` contains only empty capability declarations; it is not connected to a hosted site. GitHub Pages cannot serve the Vinext server build directly; choose a compatible host or adapt to a static export before deploying.
+No deployment is configured or enabled. The new GitHub repository is intended to remain private while the design is being refined. The generated `.openai/hosting.json` contains only empty capability declarations; it is not connected to a hosted site. GitHub Pages cannot serve the Vinext server build directly; choose a compatible host or adapt to a static export before deploying.
