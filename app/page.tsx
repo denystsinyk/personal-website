@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import Script from 'next/script';
 
 export default function Home() {
   return (
@@ -54,9 +52,8 @@ export default function Home() {
                 </p>
               </div>
               <figure className="me">
-                <Image
-                  unoptimized
-                  src="/assets/me.jpg"
+                <img
+                        src="/assets/me.jpg"
                   alt="Denys as a kid, already in a suit vest"
                   width="728"
                   height="1296"
@@ -68,9 +65,8 @@ export default function Home() {
 
           <div className="divider" aria-hidden="true">
             <div className="shelf">
-              <Image
-                unoptimized
-                src="/assets/shelf.png"
+              <img
+                    src="/assets/shelf.png"
                 alt="A shelf of my favorite things: a snowboard, computer, bonsai, games, and hiking boots"
                 width="1792"
                 height="742"
@@ -365,7 +361,7 @@ export default function Home() {
         </footer>
       </div>
 
-      <Script src="/site.js" strategy="afterInteractive" />
+      <script src="/site.js" defer />
     </>
   );
 }
