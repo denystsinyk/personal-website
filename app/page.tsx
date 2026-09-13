@@ -15,6 +15,7 @@ export default function Home() {
             <a href="#about">about</a>
             <a href="#work">work</a>
             <a href="#projects">projects</a>
+            <a href="/split">split</a>
             <a href="#contact">
               say hello <span aria-hidden="true">↗</span>
             </a>
@@ -283,6 +284,12 @@ export default function Home() {
                   Command-line tools · Weather
                 </span>
               </div>
+            </a>
+            <a className="project-card" href="/split">
+              <span className="project-number">03 /</span>
+              <div><h3>Receipt splitter <span aria-hidden="true">↗</span></h3>
+              <p>Scan a receipt, pick who had what, and split the bill down to the cent.</p>
+              <span className="project-tech">Receipt scanning · Shared expenses</span></div>
             </a>
             <p className="projects-note">small things, made to be useful.</p>
           </section>

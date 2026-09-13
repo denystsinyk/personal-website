@@ -26,7 +26,7 @@ npm run format
 - `public/site.js`: theme toggle, signature, and weather effects.
 - `public/assets/`: personal photo and original illustrated shelf.
 
-Built with React, TypeScript, and Vinext/Vite. No database, API keys, agent tooling, or hosting account is required. The contact link opens the visitor’s email client.
+Built with React, TypeScript, and Vinext/Vite. No database is required. The optional receipt scanning feature uses a server-side Gemini API key. The contact link opens the visitor’s email client.
 
 ## Configuration
 
@@ -42,3 +42,27 @@ Formatting and linting use their default configuration. Local agent metadata is 
 Confirm the Character.AI internship wording, graduation date, and roles labeled “present.” No résumé download is shown until a PDF is supplied. Social previews currently use the existing public portrait URL; update it to the chosen deployment URL when publishing.
 
 No deployment is enabled. The original `denys_tsinyk` repository and live website are unchanged. This build uses a Node server; GitHub Pages cannot serve it directly.
+
+## Receipt splitter
+
+Open `/split` (also linked from the homepage). Supports photos, upload/drag-and-drop/paste,
+manual entry, item assignments, proportional tax/fees/tip, cent-exact totals, copyable
+breakdowns, and browser-local draft storage. Review scanned prices before sharing.
+Adapted from [Shreyash Ranjan’s splitter](https://github.com/codingshreyash/codingshreyash.github.io/blob/main/split/index.html).
+
+- `app/split/`: route, trusted static UI markup, and scoped theme styles.
+- `public/split.js`: receipt editor, local OCR fallback, and split calculations.
+- `app/api/split/scan/route.ts`: bounded image uploads and server-side Gemini requests.
+
+Copy `.env.example` to `.env.local` and set `GEMINI_API_KEY`. Set the same secret in the
+production server environment when deploying. Never use a `NEXT_PUBLIC_` or `VITE_` prefix.
+`GEMINI_MODEL` defaults to `gemini-3.6-flash`. If AI is unavailable, Tesseract OCR runs in
+the browser (requires downloading its library and language data); manual entry always works.
+Photos used for AI scans are sent to Google. Drafts are stored in localStorage; reset clears
+the receipt and keeps recent names. The server does not persist receipt images.
+
+`SPLIT_DAILY_LIMIT` defaults to 100 AI attempts per UTC day per server process. This is
+an in-memory limit that resets on restart; multi-instance hosting needs a shared quota
+store for a global limit. The browser additionally limits itself to 10 AI attempts per day.
+
+Run the receipt calculation tests with `node --test --test-isolation=none tests/split.test.cjs`.
