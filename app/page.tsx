@@ -8,16 +8,12 @@ export default function Home() {
       </a>
       <div className="page" id="top">
         <header className="site-header">
-          <a className="home-link" href="#top">
-            DT<span>.</span>
-          </a>
           <nav aria-label="Main navigation">
             <a href="#about">about</a>
             <a href="#work">work</a>
             <a href="#projects">projects</a>
-            <a href="./split.html">split</a>
-            <a href="#contact">
-              say hello <span aria-hidden="true">↗</span>
+            <a href="mailto:denystsinyk@gmail.com">
+              email <span aria-hidden="true">↗</span>
             </a>
           </nav>
           <button
@@ -284,12 +280,6 @@ export default function Home() {
                   Command-line tools · Weather
                 </span>
               </div>
-            </a>
-            <a className="project-card" href="./split.html">
-              <span className="project-number">03 /</span>
-              <div><h3>Receipt splitter <span aria-hidden="true">↗</span></h3>
-              <p>Scan a receipt, pick who had what, and split the bill down to the cent.</p>
-              <span className="project-tech">Receipt scanning · Shared expenses</span></div>
             </a>
             <p className="projects-note">small things, made to be useful.</p>
           </section>

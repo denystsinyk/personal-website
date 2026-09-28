@@ -3,10 +3,10 @@ export const markup = `
 <div class="wrap">
 
   <header class="topbar">
-    <a class="brand" href="./">DT<span>.</span></a>
+    <a class="brand" href="../">Denys Tsinyk</a>
     <nav>
-      <a href="./">home</a>
-      <a href="./#projects">projects</a>
+      <a href="../">home</a>
+      <a href="../#projects">projects</a>
       <a href="#" id="reset-all">reset</a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀</button>
     </nav>

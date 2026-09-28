@@ -29,6 +29,8 @@ jobs:
         run: npm ci
       - name: Build static site
         run: npm run build
+      - name: Add the clean receipt splitter URL
+        run: mkdir -p dist/client/split && cp dist/client/split.html dist/client/split/index.html && cp dist/client/favicon.svg dist/client/split/favicon.svg
       - name: Add Pages marker
         run: touch dist/client/.nojekyll
       - name: Upload Pages artifact

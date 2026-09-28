@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
 import './globals.css';
 export const metadata: Metadata = {
-  title: 'Denys Tsinyk — Software & safety',
+  title: 'Denys Tsinyk',
   description:
-    'Computer science at Pitt. Building software, security automation, and useful things.',
+    'CS @ Pitt',
   icons: { icon: './favicon.svg' },
   openGraph: {
     title: 'Denys Tsinyk',
     description:
-      'Computer science at Pitt. Software, security, and useful things.',
+      'CS @ Pitt',
     images: ['https://denystsinyk.github.io/personal-website/assets/me.jpg'],
   },
   twitter: {
     card: 'summary',
     title: 'Denys Tsinyk',
     description:
-      'Computer science at Pitt. Software, security, and useful things.',
+      'CS @ Pitt',
     images: ['https://denystsinyk.github.io/personal-website/assets/me.jpg'],
   },
 };
