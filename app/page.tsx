@@ -1,4 +1,6 @@
 
+import Script from 'next/script';
+
 export default function Home() {
   return (
     <>
@@ -45,10 +47,10 @@ export default function Home() {
               </div>
               <figure className="me">
                 <img
-                  src="./assets/denystsinyk.jpg"
+                  src="./assets/denystsinyk-portrait.webp"
                   alt="Denys at SteelHacks"
-                  width="5039"
-                  height="4031"
+                  width="864"
+                  height="1080"
                 />
               </figure>
             </div>
@@ -97,8 +99,7 @@ export default function Home() {
               </a>.
             </p>
             <div className="offclock-heading">
-              <h3>Off the clock</h3>
-              <span>snow, trails, mountains &amp; soccer</span>
+              <h3>In my free time</h3>
             </div>
             <div className="life-gallery">
               <figure className="life-photo">
@@ -111,7 +112,6 @@ export default function Home() {
                     loading="lazy"
                   />
                 </div>
-                <figcaption>snowboarding</figcaption>
               </figure>
               <figure className="life-photo life-photo-hike">
                 <div className="life-photo-frame">
@@ -123,7 +123,6 @@ export default function Home() {
                     loading="lazy"
                   />
                 </div>
-                <figcaption>finding a trail</figcaption>
               </figure>
               <figure className="life-photo life-photo-mountain">
                 <div className="life-photo-frame">
@@ -135,7 +134,6 @@ export default function Home() {
                     loading="lazy"
                   />
                 </div>
-                <figcaption>somewhere up high</figcaption>
               </figure>
               <figure className="life-photo">
                 <div className="life-photo-frame">
@@ -147,7 +145,6 @@ export default function Home() {
                     loading="lazy"
                   />
                 </div>
-                <figcaption>soccer</figcaption>
               </figure>
             </div>
           </section>
@@ -159,14 +156,13 @@ export default function Home() {
               <div className="job-head">
                 <h3>Character.AI</h3>
                 <span className="leader"></span>
-                <span className="dates">Summer 2026</span>
+                <span className="dates">Summer 2026 - present</span>
               </div>
               <p className="role">
-                Software Engineering Intern, Trust &amp; Safety
+                Software Engineer Intern | Trust &amp; Safety
               </p>
               <p>
-                Go backend services and React tooling for the Trust &amp; Safety
-                team.
+                Product and Operational Safety
               </p>
             </article>
 
@@ -174,26 +170,23 @@ export default function Home() {
               <div className="job-head">
                 <h3>National Football League</h3>
                 <span className="leader"></span>
-                <span className="dates">2025&ndash;26</span>
+                <span className="dates">Summer 2025</span>
               </div>
-              <p className="role">Security Automation Intern</p>
+              <p className="role">Software Engineer Intern | InfoSec</p>
               <p>
-                Built automation around the league’s security infrastructure
-                &mdash; firewall rule analysis and tooling that turned manual
-                review work into pipelines.
+                Security Operations
               </p>
             </article>
 
             <article className="job">
               <div className="job-head">
-                <h3>PittCSC</h3>
+                <h3>MedPath</h3>
                 <span className="leader"></span>
-                <span className="dates">2025&ndash;present</span>
+                <span className="dates">Spring 2025</span>
               </div>
-              <p className="role">Events Coordinator</p>
+              <p className="role">Software Engineer Intern</p>
               <p>
-                Plan and run events for Pitt’s computer science club &mdash;
-                tech talks, socials, and company visits.
+                Medical Education Platform
               </p>
             </article>
 
@@ -201,20 +194,19 @@ export default function Home() {
               <div className="job-head">
                 <h3>University of Pittsburgh</h3>
                 <span className="leader"></span>
-                <span className="dates">2025&ndash;present</span>
+                <span className="dates">Fall 2025 - present</span>
               </div>
               <p className="role">
-                Teaching Assistant, Data Structures &amp; Algorithms
+                Teaching Assistant
               </p>
               <p>
-                Recitations, office hours, and explaining why the exam wants
-                O(log&nbsp;n).
+                Data Structures and Algorithms
               </p>
             </article>
           </section>
 
           <section id="projects">
-            <h2>Things I’ve built</h2>
+            <h2>Projects</h2>
             <a
               className="project-card"
               href="https://github.com/denystsinyk/worthit"
@@ -225,44 +217,37 @@ export default function Home() {
                   worthit <span aria-hidden="true">↗</span>
                 </h3>
                 <p>
-                  A local dashboard that makes recurring Amex benefits easier to
-                  track, using transaction data from Plaid.
+                  Never miss an AMEX benefit again
                 </p>
-                <span className="project-tech">Python · Flask · Plaid</span>
               </div>
             </a>
             <a
               className="project-card"
-              href="https://github.com/denystsinyk/WeatherCli"
+              href="https://github.com/denystsinyk/Pitt2PIT"
             >
               <span className="project-number">02 /</span>
               <div>
                 <h3>
-                  WeatherCLI <span aria-hidden="true">↗</span>
+                  Pitt2PIT <span aria-hidden="true">↗</span>
                 </h3>
                 <p>
-                  The weather for any city, right in your terminal. No ads. No
-                  nonsense.
+                  Cheap rides for Pitt Students
                 </p>
-                <span className="project-tech">
-                  Command-line tools · Weather
-                </span>
               </div>
             </a>
-            <p className="projects-note">small things, made to be useful.</p>
+            <p className="more-projects">
+              <a href="https://github.com/denystsinyk">
+                See all projects on GitHub <span aria-hidden="true">↗</span>
+              </a>
+            </p>
           </section>
 
           <section id="contact">
-            <h2>Let’s talk</h2>
-            <p className="contact-intro">
-              Something interesting to build? A good trail recommendation?
-              <br />
-              My inbox is open.
-            </p>
+            <h2>Info</h2>
             <ul className="contact-list">
               <li>
                 <span className="label">email</span>
-                <a href="mailto:det82@pitt.edu">det82@pitt.edu</a>
+                <a href="mailto:denystsinyk@gmail.com">denystsinyk@gmail.com</a>
               </li>
               <li>
                 <span className="label">github</span>
@@ -279,38 +264,11 @@ export default function Home() {
             </ul>
           </section>
 
-          <div className="signoff" aria-hidden="true">
-            <svg
-              className="sig"
-              viewBox="0 0 150 66"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M16,10 C12,22 9,34 7,45 M16,10 C34,5 46,16 41,28 C36,39 21,46 8,45" />
-              <path
-                d="M50,36 C57,34 58,28 52,29 C46,30 43,38 47,43 C51,47 58,42 62,37
-               M66,30 C64,35 62,41 61,44 C64,37 69,31 73,32 C76,33 74,41 73,44
-               M79,31 C77,36 76,42 78,44 C81,46 85,38 87,32 C85,42 82,54 75,59 C70,62 68,56 72,51
-               M94,30 C90,31 88,35 91,37 C95,39 96,42 92,44 C89,45 86,44 85,42"
-              />
-              <path className="flourish" d="M6,56 C40,51 80,59 118,51" />
-            </svg>
-          </div>
         </main>
         <footer>
           <div className="foot-row">
             <span>
               &copy; {new Date().getFullYear()} Denys Tsinyk
-              <svg
-                className="flag"
-                width="14"
-                height="10"
-                viewBox="0 0 14 10"
-                aria-hidden="true"
-              >
-                <rect width="14" height="5" fill="var(--blue)" />
-                <rect y="5" width="14" height="5" fill="var(--gold)" />
-              </svg>
-              handmade in Pittsburgh
             </span>
             <div className="footer-controls">
               <button id="weather-toggle" aria-pressed="false">
@@ -322,11 +280,10 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <p className="eof">{'//'} end of run &mdash; lift closes at 5</p>
         </footer>
       </div>
 
-      <script src="./site.js" defer />
+      <Script src="./site.js" strategy="afterInteractive" />
     </>
   );
 }

@@ -19,40 +19,6 @@ document.getElementById('theme-toggle').addEventListener('click', function () {
   });
 });
 
-// ---------- signature: draws itself when scrolled into view ----------
-(function () {
-  const sig = document.querySelector('.sig');
-  if (!sig || !('IntersectionObserver' in window)) return;
-  const paths = sig.querySelectorAll('path');
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let delay = 0;
-  paths.forEach(function (p) {
-    const len = p.getTotalLength();
-    p.style.strokeDasharray = len;
-    p.style.strokeDashoffset = reduced ? 0 : len;
-    p.dataset.dur = Math.min(1.2, len / 200);
-    p.dataset.delay = delay;
-    delay += Number(p.dataset.dur) * 0.85;
-  });
-  if (reduced) return;
-  new IntersectionObserver(
-    function (entries, obs) {
-      if (!entries[0].isIntersecting) return;
-      obs.disconnect();
-      paths.forEach(function (p) {
-        p.style.transition =
-          'stroke-dashoffset ' +
-          p.dataset.dur +
-          's ease ' +
-          p.dataset.delay +
-          's';
-        p.style.strokeDashoffset = 0;
-      });
-    },
-    { threshold: 0.5 },
-  ).observe(sig);
-})();
-
 // ---------- weather: night = snow piling on the footer rule, day = clouds + a distant flock ----------
 (function () {
   const motionQuery = matchMedia('(prefers-reduced-motion: reduce)');

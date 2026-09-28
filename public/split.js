@@ -1734,33 +1734,6 @@
       if (e.key === "Escape") $("#lightbox").classList.remove("open");
     });
 
-    $("#reset-all").onclick = function (e) {
-      e.preventDefault();
-      if (!confirm("Clear this receipt and start over? Saved names are kept.")) return;
-      try {
-        localStorage.removeItem(LS.state);
-      } catch {}
-      location.reload();
-    };
-
-    var toggle = $("#theme-toggle");
-    function paintToggle() {
-      var t = document.documentElement.getAttribute("data-theme");
-      toggle.textContent = "day / night";
-      toggle.setAttribute(
-        "aria-label",
-        t === "dark" ? "Switch to light mode" : "Switch to dark mode",
-      );
-    }
-    toggle.onclick = function () {
-      var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      try {
-        localStorage.setItem("theme", next);
-      } catch {}
-      paintToggle();
-    };
-    paintToggle();
   }
 
   /* ============================================================
