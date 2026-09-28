@@ -3,10 +3,10 @@ export const markup = `
 <div class="wrap">
 
   <header class="topbar">
-    <a class="brand" href="/">DT<span>.</span></a>
+    <a class="brand" href="./">DT<span>.</span></a>
     <nav>
-      <a href="/">home</a>
-      <a href="/#projects">projects</a>
+      <a href="./">home</a>
+      <a href="./#projects">projects</a>
       <a href="#" id="reset-all">reset</a>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">☀</button>
     </nav>
@@ -14,7 +14,7 @@ export const markup = `
 
   <section class="hero"><p class="eyebrow">SMALL THINGS, MADE TO BE USEFUL</p>
     <h1>Split a receipt<span class="slash">.</span></h1>
-    <p>Dinner with friends. Groceries with roommates. Everyone pays their share.</p><p class="privacy">Photo scans are sent to Google Gemini for reading. Your split is saved in this browser. Review scanned prices before sharing.</p>
+    <p>Dinner with friends. Groceries with roommates. Everyone pays their share.</p><p class="privacy">Receipt photos are read in your browser. Your split is saved in this browser. Review scanned prices before sharing.</p>
   </section>
 
   <nav class="rail" aria-label="Steps">

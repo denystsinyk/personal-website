@@ -1280,7 +1280,7 @@
   }
 
   function geminiOn() {
-    return true;
+    return false;
   }
 
   function quotaToday() {

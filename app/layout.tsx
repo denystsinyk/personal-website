@@ -4,18 +4,19 @@ export const metadata: Metadata = {
   title: 'Denys Tsinyk — Software & safety',
   description:
     'Computer science at Pitt. Building software, security automation, and useful things.',
+  icons: { icon: './favicon.svg' },
   openGraph: {
     title: 'Denys Tsinyk',
     description:
       'Computer science at Pitt. Software, security, and useful things.',
-    images: ['https://denystsinyk.github.io/denys_tsinyk/assets/me.jpg'],
+    images: ['https://denystsinyk.github.io/personal-website/assets/me.jpg'],
   },
   twitter: {
     card: 'summary',
     title: 'Denys Tsinyk',
     description:
       'Computer science at Pitt. Software, security, and useful things.',
-    images: ['https://denystsinyk.github.io/denys_tsinyk/assets/me.jpg'],
+    images: ['https://denystsinyk.github.io/personal-website/assets/me.jpg'],
   },
 };
 export default function RootLayout({

@@ -15,7 +15,7 @@ export default function Home() {
             <a href="#about">about</a>
             <a href="#work">work</a>
             <a href="#projects">projects</a>
-            <a href="/split">split</a>
+            <a href="./split.html">split</a>
             <a href="#contact">
               say hello <span aria-hidden="true">↗</span>
             </a>
@@ -54,7 +54,7 @@ export default function Home() {
               </div>
               <figure className="me">
                 <img
-                        src="/assets/me.jpg"
+                        src="./assets/me.jpg"
                   alt="Denys as a kid, already in a suit vest"
                   width="728"
                   height="1296"
@@ -67,7 +67,7 @@ export default function Home() {
           <div className="divider" aria-hidden="true">
             <div className="shelf">
               <img
-                    src="/assets/shelf.png"
+                    src="./assets/shelf.png"
                 alt="A shelf of my favorite things: a snowboard, computer, bonsai, games, and hiking boots"
                 width="1792"
                 height="742"
@@ -285,7 +285,7 @@ export default function Home() {
                 </span>
               </div>
             </a>
-            <a className="project-card" href="/split">
+            <a className="project-card" href="./split.html">
               <span className="project-number">03 /</span>
               <div><h3>Receipt splitter <span aria-hidden="true">↗</span></h3>
               <p>Scan a receipt, pick who had what, and split the bill down to the cent.</p>
@@ -368,7 +368,7 @@ export default function Home() {
         </footer>
       </div>
 
-      <script src="/site.js" defer />
+      <script src="./site.js" defer />
     </>
   );
 }
