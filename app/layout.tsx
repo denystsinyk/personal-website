@@ -9,14 +9,14 @@ export const metadata: Metadata = {
     title: 'Denys Tsinyk',
     description:
       'CS @ Pitt',
-    images: ['https://denystsinyk.github.io/personal-website/assets/me.jpg'],
+    images: ['https://denystsinyk.github.io/personal-website/assets/denystsinyk.jpg'],
   },
   twitter: {
     card: 'summary',
     title: 'Denys Tsinyk',
     description:
       'CS @ Pitt',
-    images: ['https://denystsinyk.github.io/personal-website/assets/me.jpg'],
+    images: ['https://denystsinyk.github.io/personal-website/assets/denystsinyk.jpg'],
   },
 };
 export default function RootLayout({

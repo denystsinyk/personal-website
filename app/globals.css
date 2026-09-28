@@ -140,16 +140,24 @@ body {
 .me {
   position: relative;
   flex: none;
-  width: 9rem;
+  width: 18rem;
+  aspect-ratio: 4 / 5;
   margin: 0;
-  transform: rotate(2deg);
+  overflow: hidden;
+  border-radius: 5px;
 }
 .me img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--rule);
+  position: absolute;
+  top: -4%;
+  left: -12%;
+  width: 124%;
+  height: 124%;
+  object-fit: cover;
+  object-position: center top;
   filter: saturate(0.88);
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  box-shadow: 0 0.6rem 1.8rem color-mix(in srgb, #000 24%, transparent);
 }
 .me figcaption {
   margin-top: 0.4rem;
@@ -176,26 +184,6 @@ body {
 .now b {
   color: var(--blue);
   font-weight: 500;
-}
-.me::before,
-.me::after {
-  /* translucent tape strips holding the photo */
-  content: '';
-  position: absolute;
-  top: -0.55rem;
-  width: 2.6rem;
-  height: 1.05rem;
-  background: color-mix(in srgb, var(--gold) 26%, transparent);
-  border: 1px solid color-mix(in srgb, var(--gold) 36%, transparent);
-  z-index: 1;
-}
-.me::before {
-  left: -0.85rem;
-  transform: rotate(-40deg);
-}
-.me::after {
-  right: -0.85rem;
-  transform: rotate(40deg);
 }
 .lede .mark {
   text-decoration-line: underline;
@@ -388,41 +376,69 @@ section p {
   max-width: 62rem;
 }
 
-/* ---------- about: off-the-clock list ---------- */
-.offclock-lead {
-  margin: 1.75rem 0 0.75rem;
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.offclock {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem 2.5rem;
-  max-width: 48rem;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.offclock li {
+/* ---------- about: photo diary ---------- */
+.offclock-heading {
   display: flex;
-  align-items: center;
-  gap: 0.7rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin: 2rem 0 0.9rem;
 }
-.offclock svg {
-  flex: none;
-  color: var(--blue);
+.offclock-heading h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 500;
 }
-.offclock li:hover svg {
-  color: var(--gold);
+.offclock-heading span {
+  color: var(--muted);
+  font: 0.62rem var(--mono);
+  letter-spacing: 0.06em;
 }
-@media (max-width: 480px) {
-  .offclock {
-    grid-template-columns: 1fr;
+.life-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 49rem;
+}
+.life-photo {
+  min-width: 0;
+  margin: 0;
+}
+.life-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+.life-photo-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.88);
+}
+.life-photo-snowboard img {
+  object-position: center 60%;
+}
+.life-photo-hike img {
+  object-position: center 62%;
+}
+.life-photo-mountain img {
+  object-position: 68% center;
+}
+.life-photo figcaption {
+  padding-top: 0.4rem;
+  color: var(--muted);
+  font: 0.62rem var(--mono);
+  letter-spacing: 0.02em;
+}
+@media (max-width: 650px) {
+  .life-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 0.75rem;
   }
 }
 
@@ -597,12 +613,6 @@ footer {
   max-width: 36rem;
   line-height: 1.75;
 }
-.me {
-  width: 7.8rem;
-}
-.me img {
-  border-radius: 2px;
-}
 .now {
   font-size: 0.68rem;
   line-height: 1.85;
@@ -639,11 +649,6 @@ section p {
 }
 #about > p {
   line-height: 1.85;
-}
-.offclock {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  gap: 0.8rem 2rem;
 }
 .job {
   margin: 0;
@@ -782,11 +787,8 @@ section p {
     min-width: 0;
   }
   .me {
-    width: 5.7rem;
+    width: 9rem;
     margin-top: 3rem;
-  }
-  .me figcaption {
-    font-size: 0.85rem;
   }
   .hero h1 {
     font-size: 2.6rem;
@@ -841,7 +843,7 @@ section p {
     gap: 1rem;
   }
   .me {
-    width: 4.6rem;
+    width: 8rem;
   }
   .hero h1 {
     font-size: 2.2rem;

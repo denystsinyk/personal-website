@@ -28,34 +28,28 @@ export default function Home() {
           <div className="hero">
             <div className="hero-flex">
               <div className="hero-text">
-                <p className="eyebrow">
-                  SOFTWARE, SAFETY &amp; A LITTLE FRESH AIR
-                </p>
                 <h1>
-                  Denys Tsinyk<span className="dot">.</span>
+                  Denys Tsinyk
                 </h1>
                 <p className="lede">
-                  I’m studying computer science at Pitt. I like building things
-                  that <span className="mark">keep people safe online</span>,
-                  and being very far from a screen the rest of the time.
+                  I’m a CS major at Pitt and enjoy building cool things, both physical and software-based. When I’m not building something, I’m usually playing video games or doing something that gets me far away from my laptop.
                 </p>
                 <p className="now">
                   <span className="k">summer ’26</span> &mdash; Trust &amp;
                   Safety @ <b>Character.AI</b>
                 </p>
                 <p className="now">
-                  <span className="k">next</span> &mdash; graduating spring 2027
-                  &middot; open to full-time trust &amp; safety / backend roles
+                  <span className="k">next</span> &mdash; graduating december 2027
+                  &middot; open to full-time roles :)
                 </p>
               </div>
               <figure className="me">
                 <img
-                        src="./assets/me.jpg"
-                  alt="Denys as a kid, already in a suit vest"
-                  width="728"
-                  height="1296"
+                  src="./assets/denystsinyk.jpg"
+                  alt="Denys at SteelHacks"
+                  width="5039"
+                  height="4031"
                 />
-                <figcaption>preparing for this since ~2011</figcaption>
               </figure>
             </div>
           </div>
@@ -64,7 +58,7 @@ export default function Home() {
             <div className="shelf">
               <img
                     src="./assets/shelf.png"
-                alt="A shelf of my favorite things: a snowboard, computer, bonsai, games, and hiking boots"
+                alt="A shelf of my favorite things"
                 width="1792"
                 height="742"
                 loading="lazy"
@@ -72,116 +66,90 @@ export default function Home() {
               <div className="lamp-beam"></div>
               <div className="shelf-floor"></div>
             </div>
-            <span className="scribble divider-note">
-              the essentials, more or less
-            </span>
           </div>
 
           <section id="about">
             <h2>About</h2>
+
             <p>
-              CS student at the University of Pittsburgh with a business minor.
-              I TA Data Structures &amp; Algorithms and coordinate events for
-              PittCSC, which mostly means convincing companies that students are
-              worth the pizza budget.
+              CS major at the University of Pittsburgh. I TA and peer tutor for
+              Data Structures &amp; Algorithms, and I am a 2x Executive Director of{' '}
+              <a href="https://steelhacks.org/" target="_blank" rel="noopener noreferrer">
+                SteelHacks
+              </a>.{' '}
+              I am also a former officer of
+              {' '}
+              <a href="https://pittcsc.org/" target="_blank" rel="noopener noreferrer">
+                PittCSC
+              </a>.
             </p>
+
             <p>
-              I keep ending up at the intersection of software and safety
-              &mdash; security automation at{' '}
-              <a className="tip" href="https://www.nfl.com/">
-                the NFL
-                <span className="tip-box" role="tooltip">
-                  firewall rule reviews, automated away
-                </span>
+              I grew up loving technology, started coding in high school, and eventually
+              followed that interest into computer science in college. Since then, I have
+              especially enjoyed working in security and safety, including work at the{' '}
+              <a href="https://www.nfl.com/" target="_blank" rel="noopener noreferrer">
+               NFL
               </a>
-              , Trust &amp; Safety tooling at
-              <a className="tip" href="https://character.ai/">
+              {' '}and{' '}
+              <a href="https://character.ai/" target="_blank" rel="noopener noreferrer">
                 Character.AI
-                <span className="tip-box" role="tooltip">
-                  Go services + React tools for the T&amp;S team
-                </span>
-              </a>
-              . Go on the backend, React when someone needs to click on things.
+              </a>.
             </p>
-            <p className="offclock-lead">Off the clock &mdash;</p>
-            <ul className="offclock">
-              <li>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  aria-hidden="true"
-                >
-                  <rect
-                    x="2.5"
-                    y="9.5"
-                    width="19"
-                    height="5"
-                    rx="2.5"
-                    transform="rotate(-14 12 12)"
+            <div className="offclock-heading">
+              <h3>Off the clock</h3>
+              <span>snow, trails, mountains &amp; soccer</span>
+            </div>
+            <div className="life-gallery">
+              <figure className="life-photo">
+                <div className="life-photo-frame life-photo-snowboard">
+                  <img
+                    src="./assets/snowboarding.jpg"
+                    alt="Snowboarding on a sunny winter day"
+                    width="2880"
+                    height="2160"
+                    loading="lazy"
                   />
-                  <path d="M9.2,8.6 L10.4,13.5 M13.6,7.5 L14.8,12.4" />
-                </svg>
-                snowboarding
-              </li>
-              <li>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <circle cx="12" cy="12" r="8.5" />
-                  <path d="M12,8.5 L15.3,10.9 L14,14.7 L10,14.7 L8.7,10.9 Z" />
-                  <path d="M12,8.5 V3.5 M15.3,10.9 L20.3,9.5 M14,14.7 L17,19 M10,14.7 L7,19 M8.7,10.9 L3.7,9.5" />
-                </svg>
-                soccer
-              </li>
-              <li>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M2.5,18.5 L8.5,7.5 L12,13.5" />
-                  <path d="M10.5,11 L14.5,5.5 L21.5,18.5" />
-                </svg>
-                trails, runs &amp; new cities
-              </li>
-              <li>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M7,7.5 H17 C19.5,7.5 21.5,9.5 21.5,12 C21.5,14.5 19.5,16.5 17,16.5 C15.5,16.5 14.5,15.5 14,14.5 H10 C9.5,15.5 8.5,16.5 7,16.5 C4.5,16.5 2.5,14.5 2.5,12 C2.5,9.5 4.5,7.5 7,7.5 Z" />
-                  <path d="M7,10.2 V13.8 M5.2,12 H8.8" />
-                  <circle cx="16.6" cy="11" r="0.5" fill="currentColor" />
-                  <circle cx="18.4" cy="13" r="0.5" fill="currentColor" />
-                </svg>
-                Rust &amp; Minecraft
-              </li>
-            </ul>
+                </div>
+                <figcaption>snowboarding</figcaption>
+              </figure>
+              <figure className="life-photo life-photo-hike">
+                <div className="life-photo-frame">
+                  <img
+                    src="./assets/hiking.jpg"
+                    alt="Hiking a forest trail with mountains in the distance"
+                    width="2160"
+                    height="2880"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption>finding a trail</figcaption>
+              </figure>
+              <figure className="life-photo life-photo-mountain">
+                <div className="life-photo-frame">
+                  <img
+                    src="./assets/mountain.jpg"
+                    alt="A mountain view during a hike"
+                    width="2880"
+                    height="2160"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption>somewhere up high</figcaption>
+              </figure>
+              <figure className="life-photo">
+                <div className="life-photo-frame">
+                  <img
+                    src="./assets/soccer.jpg"
+                    alt="My soccer team celebrating with a cup"
+                    width="2880"
+                    height="2160"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption>soccer</figcaption>
+              </figure>
+            </div>
           </section>
 
           <section id="work">
