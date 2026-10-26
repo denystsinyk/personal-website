@@ -1280,7 +1280,7 @@
   }
 
   function geminiOn() {
-    return false;
+    return true;
   }
 
   function quotaToday() {
@@ -1304,8 +1304,10 @@
   }
 
   function runGemini(dataUrl, onStep) {
-    var m = String(dataUrl).match(/^data:(image\/[a-zA-Z+]+);base64,([\s\S]*)$/);
-    if (!m) return Promise.reject(new Error("could not encode the image"));
+    var m = String(dataUrl).match(
+      /^data:((?:image\/[a-zA-Z+.-]+)|application\/pdf);base64,([\s\S]*)$/,
+    );
+    if (!m) return Promise.reject(new Error("could not encode the receipt"));
     onStep(0.35, "reading the receipt");
     quotaSpend();
 
@@ -1380,51 +1382,62 @@
     b.innerHTML =
       "<b>Scan failed.</b> " +
       esc(msg) +
-      "<br>Your photo is still attached, so you can press <b>Type it in</b> and read it off that.";
+      "<br>Your receipt is still attached, so you can press <b>Type it in</b> and read it off that.";
     b.classList.add("show");
   }
 
   function handleFile(file) {
     if (scanning) return;
-    if (!file || !file.type.startsWith("image/")) {
-      toast("that needs to be an image");
+    var isPdf = !!file && (file.type === "application/pdf" || /\.pdf$/i.test(file.name || ""));
+    if (!file || (!file.type.startsWith("image/") && !isPdf)) {
+      toast("choose a receipt image or PDF");
       return;
     }
-    if (file.size > 20 * 1024 * 1024) {
-      toast("Please choose an image under 20 MB");
+    if (file.size > (isPdf ? 4 : 20) * 1024 * 1024) {
+      toast(isPdf ? "Please choose a PDF under 4 MB" : "Please choose an image under 20 MB");
       return;
     }
     scanning = true;
 
     // Gemini when it is configured and there are scans left, otherwise built-in OCR
     var useGemini = geminiOn() && quotaLeft() > 0;
+    if (isPdf && !useGemini) {
+      toast("PDF scanning needs AI and an available scan");
+      scanning = false;
+      return;
+    }
     if (geminiOn() && !useGemini) toast("out of free scans today, using built-in OCR");
     $("#scan-error").classList.remove("show");
-    setProgress(0.05, "opening the photo");
+    setProgress(0.05, "opening the receipt");
 
     readFile(file)
-      .then(loadImage)
-      .then(function (img) {
-        // a compact copy for the on-page thumbnail / lightbox
-        var view = preprocess(img, 1100);
-        state.image = view.toDataURL("image/jpeg", 0.72);
-
-        if (!useGemini) {
-          return runTesseract(preprocess(img, 1600), setProgress).then(function (text) {
-            return parseReceipt(text);
-          });
+      .then(function (dataUrl) {
+        if (isPdf) {
+          state.image = "";
+          return runGemini(dataUrl, setProgress).then(parseLLMJson);
         }
-        var send = el("canvas");
-        var s = Math.min(1, 1800 / Math.max(1, img.naturalWidth, img.naturalHeight));
-        send.width = Math.round(img.naturalWidth * s);
-        send.height = Math.round(img.naturalHeight * s);
-        send.getContext("2d").drawImage(img, 0, 0, send.width, send.height);
-        return runGemini(send.toDataURL("image/jpeg", 0.85), setProgress)
-          .then(parseLLMJson)
-          .catch(function () {
-            setProgress(0.4, "AI scan unavailable; reading in your browser");
-            return runTesseract(preprocess(img, 1600), setProgress).then(parseReceipt);
-          });
+        return loadImage(dataUrl).then(function (img) {
+          // a compact copy for the on-page thumbnail / lightbox
+          var view = preprocess(img, 1100);
+          state.image = view.toDataURL("image/jpeg", 0.72);
+
+          if (!useGemini) {
+            return runTesseract(preprocess(img, 1600), setProgress).then(function (text) {
+              return parseReceipt(text);
+            });
+          }
+          var send = el("canvas");
+          var s = Math.min(1, 1800 / Math.max(1, img.naturalWidth, img.naturalHeight));
+          send.width = Math.round(img.naturalWidth * s);
+          send.height = Math.round(img.naturalHeight * s);
+          send.getContext("2d").drawImage(img, 0, 0, send.width, send.height);
+          return runGemini(send.toDataURL("image/jpeg", 0.85), setProgress)
+            .then(parseLLMJson)
+            .catch(function () {
+              setProgress(0.4, "AI scan unavailable; reading in your browser");
+              return runTesseract(preprocess(img, 1600), setProgress).then(parseReceipt);
+            });
+        });
       })
       .then(function (parsed) {
         applyParsed(parsed);
@@ -1733,7 +1746,6 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") $("#lightbox").classList.remove("open");
     });
-
   }
 
   /* ============================================================

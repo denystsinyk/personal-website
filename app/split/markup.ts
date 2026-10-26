@@ -10,7 +10,7 @@ export const markup = `
 
   <section class="hero"><p class="eyebrow">SMALL THINGS, MADE TO BE USEFUL</p>
     <h1>Split a receipt<span class="slash">.</span></h1>
-    <p>Dinner with friends. Groceries with roommates. Everyone pays their share.</p><p class="privacy">Receipt photos are read in your browser. Your split is saved in this browser. Review scanned prices before sharing.</p>
+    <p>Dinner with friends. Groceries with roommates. Everyone pays their share.</p><p class="privacy">Receipt images use AI scanning with in-browser OCR as a fallback. PDFs use AI scanning. Your split is saved in this browser. Review scanned prices before sharing.</p>
   </section>
 
   <nav class="rail" aria-label="Steps">
@@ -42,8 +42,8 @@ export const markup = `
         </div>
         <div class="drop" id="drop-upload" role="button" tabindex="0">
           <span class="big">↥</span>
-          <div class="t">Upload an image</div>
-          <div class="s">from your photos or files</div>
+          <div class="t">Upload a receipt</div>
+          <div class="s">image or PDF</div>
         </div>
         <div class="drop" id="drop-manual" role="button" tabindex="0">
           <span class="big">✎</span>
@@ -52,7 +52,7 @@ export const markup = `
         </div>
       </div>
       <input type="file" id="file-camera" accept="image/*" capture="environment" class="sr" />
-      <input type="file" id="file-upload" accept="image/*" class="sr" />
+      <input type="file" id="file-upload" accept="image/*,application/pdf,.pdf" class="sr" />
 
       <div class="banner" id="scan-error" role="alert" style="margin-top:12px"></div>
 
