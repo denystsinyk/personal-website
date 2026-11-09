@@ -1,5 +1,6 @@
 
 import Script from 'next/script';
+import Shelf from './shelf';
 
 export default function Home() {
   return (
@@ -42,7 +43,7 @@ export default function Home() {
                 </p>
                 <p className="now">
                   <span className="k">next</span> &mdash; graduating december 2027
-                  &middot; open to full-time roles :)
+                  &middot; open to summer 2027 intern roles :)
                 </p>
               </div>
               <figure className="me">
@@ -56,19 +57,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="divider" aria-hidden="true">
-            <div className="shelf">
-              <img
-                    src="./assets/shelf.png"
-                alt="A shelf of my favorite things"
-                width="1792"
-                height="742"
-                loading="lazy"
-              />
-              <div className="lamp-beam"></div>
-              <div className="shelf-floor"></div>
-            </div>
-          </div>
+          <Shelf />
 
           <section id="about">
             <h2>About</h2>

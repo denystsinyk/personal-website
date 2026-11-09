@@ -187,6 +187,126 @@ body {
   width: 100%;
   height: auto;
 }
+.shelf-item-trigger {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: help;
+}
+.shelf-item-trigger:focus-visible {
+  /* The silhouette stroke below supplies the visible focus indicator. */
+  outline: none;
+}
+.shelf-outline {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.shelf-outline polygon {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.shelf-item-trigger[data-active='true'] + .shelf-outline,
+.shelf-item-trigger:focus-visible + .shelf-outline {
+  opacity: 1;
+}
+.shelf-caption {
+  position: absolute;
+  z-index: 4;
+  width: min(240px, calc(100vw - 24px));
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease, visibility 150ms ease;
+}
+.shelf[data-active='true'] .shelf-caption[data-ready='true'] {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.shelf-caption-bubble {
+  position: relative;
+  padding: 12px 16px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 12%);
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.shelf-caption-bubble::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-left: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  background: var(--bg);
+}
+.shelf-caption[data-side='left'] .shelf-caption-bubble::before {
+  right: -5px;
+  top: var(--caption-arrow-offset);
+  transform: translateY(-50%) rotate(225deg);
+}
+.shelf-caption[data-side='right'] .shelf-caption-bubble::before {
+  left: -5px;
+  top: var(--caption-arrow-offset);
+  transform: translateY(-50%) rotate(45deg);
+}
+.shelf-caption[data-side='top'] .shelf-caption-bubble::before {
+  left: var(--caption-arrow-offset);
+  bottom: -5px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+.shelf-caption[data-side='bottom'] .shelf-caption-bubble::before {
+  left: var(--caption-arrow-offset);
+  top: -5px;
+  transform: translateX(-50%) rotate(135deg);
+}
+/* Keep the short gap between the scene and caption hoverable. */
+.shelf-caption::after {
+  content: '';
+  position: absolute;
+}
+.shelf-caption[data-side='left']::after {
+  top: 0;
+  right: -12px;
+  width: 12px;
+  height: 100%;
+}
+.shelf-caption[data-side='right']::after {
+  top: 0;
+  left: -12px;
+  width: 12px;
+  height: 100%;
+}
+.shelf-caption[data-side='top']::after {
+  left: 0;
+  bottom: -12px;
+  width: 100%;
+  height: 12px;
+}
+.shelf-caption[data-side='bottom']::after {
+  left: 0;
+  top: -12px;
+  width: 100%;
+  height: 12px;
+}
 /* the lamp only glows at night — beam + halo drawn over the illustration */
 .lamp-beam {
   display: none;
