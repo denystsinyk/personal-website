@@ -547,6 +547,7 @@ footer {
 }
 .site-header nav {
   display: flex;
+  flex-wrap: wrap;
   grid-column: 2;
   gap: 1.65rem;
 }

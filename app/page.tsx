@@ -15,6 +15,13 @@ export default function Home() {
             <a href="#about">about</a>
             <a href="#work">work</a>
             <a href="#projects">projects</a>
+            <a
+              href="./DenysTsinyk_Resume.pdf"
+              download="DenysTsinyk_Resume.pdf"
+              aria-label="Download resume (PDF)"
+            >
+              resume <span aria-hidden="true">↓</span>
+            </a>
             <a href="mailto:denystsinyk@gmail.com">
               email <span aria-hidden="true">↗</span>
             </a>
