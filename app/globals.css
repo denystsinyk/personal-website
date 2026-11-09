@@ -66,9 +66,7 @@ body {
 .page {
   position: relative;
   z-index: 1;
-  max-width: 72rem;
   margin: 0 auto;
-  padding: 1.75rem 1.75rem 4rem;
 }
 
 /* ---------- weather (canvas sits behind the page content):
@@ -85,7 +83,6 @@ body {
 /* ---------- theme toggle (lives in the footer) ---------- */
 #theme-toggle {
   font-family: var(--mono);
-  font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
@@ -117,8 +114,6 @@ body {
 .hero-flex {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem 2.75rem;
 }
 .hero-text {
   flex: 1;
@@ -126,10 +121,7 @@ body {
 }
 .hero h1 {
   margin: 0 0 1.25rem;
-  font-size: clamp(2.4rem, 7vw, 3.3rem);
-  font-weight: 600;
   line-height: 1.1;
-  letter-spacing: -0.01em;
 }
 .me {
   position: relative;
@@ -153,14 +145,11 @@ body {
   box-shadow: 0 0.6rem 1.8rem color-mix(in srgb, #000 24%, transparent);
 }
 .hero .lede {
-  max-width: 56rem;
   margin: 0 0 1.5rem;
-  font-size: 1.15rem;
 }
 .now {
   margin: 0 0 0.35rem;
   font-family: var(--mono);
-  font-size: 0.8rem;
   color: var(--muted);
 }
 .now .k {
@@ -179,7 +168,6 @@ body {
 .shelf {
   position: relative;
   width: 100%;
-  max-width: 56rem;
   margin: 0 auto;
 }
 .shelf img {
@@ -389,7 +377,6 @@ section {
 section h2 {
   margin: 0 0 1.1rem;
   font-family: var(--mono);
-  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -401,7 +388,6 @@ section h2::before {
 }
 section p {
   margin: 0 0 1rem;
-  max-width: 62rem;
 }
 
 /* ---------- about: photo diary ---------- */
@@ -470,8 +456,6 @@ section p {
 }
 .job-head h3 {
   margin: 0;
-  font-size: 1.05rem;
-  font-weight: 600;
 }
 .job-head .leader {
   flex: 1;
@@ -488,7 +472,6 @@ section p {
 }
 .job .role {
   margin: 0.2rem 0 0.35rem;
-  font-size: 0.95rem;
   color: var(--gold);
   font-style: italic;
 }
@@ -506,11 +489,9 @@ section p {
   flex-direction: column;
   gap: 0.6rem;
   font-family: var(--mono);
-  font-size: 0.85rem;
 }
 .contact-list .label {
   display: inline-block;
-  width: 6.5rem;
   color: var(--muted);
 }
 

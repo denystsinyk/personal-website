@@ -1,6 +1,8 @@
+import Script from "next/script";
+import Shelf from "./shelf";
 
-import Script from 'next/script';
-import Shelf from './shelf';
+const galleryImageSizes =
+  "(max-width: 650px) calc((100vw - 3.45rem) / 2), (max-width: 864px) calc((100vw - 8rem) / 4), 11.5rem";
 
 export default function Home() {
   return (
@@ -26,11 +28,7 @@ export default function Home() {
               email <span aria-hidden="true">↗</span>
             </a>
           </nav>
-          <button
-            className="header-theme"
-            data-theme-toggle
-            aria-label="Toggle color theme"
-          >
+          <button className="header-theme" data-theme-toggle aria-label="Toggle color theme">
             day / night
           </button>
         </header>
@@ -38,24 +36,27 @@ export default function Home() {
           <div className="hero">
             <div className="hero-flex">
               <div className="hero-text">
-                <h1>
-                  Denys Tsinyk
-                </h1>
+                <h1>Denys Tsinyk</h1>
                 <p className="lede">
-                  I’m a CS major at Pitt and enjoy building cool things, both physical and software-based. When I’m not building something, I’m usually playing video games or doing something that gets me far away from my laptop.
+                  I’m a CS major at Pitt and enjoy building cool things, both physical and
+                  software-based. When I’m not building something, I’m usually playing video games
+                  or doing something that gets me far away from my laptop.
                 </p>
                 <p className="now">
-                  <span className="k">summer ’26</span> &mdash; Trust &amp;
-                  Safety @ <b>Character.AI</b>
+                  <span className="k">summer ’26</span> &mdash; Trust &amp; Safety @{" "}
+                  <b>Character.AI</b>
                 </p>
                 <p className="now">
-                  <span className="k">next</span> &mdash; graduating december 2027
-                  &middot; open to summer 2027 intern roles :)
+                  <span className="k">next</span> &mdash; graduating december 2027 &middot; open to
+                  summer 2027 intern roles :)
                 </p>
               </div>
               <figure className="me">
                 <img
                   src="./assets/denystsinyk-portrait.webp"
+                  srcSet="./assets/denystsinyk-portrait-576.webp 576w, ./assets/denystsinyk-portrait.webp 864w"
+                  sizes="(max-width: 331px) calc(100vw - 2.7rem), 18rem"
+                  fetchPriority="high"
                   alt="Denys at SteelHacks"
                   width="864"
                   height="1080"
@@ -70,29 +71,30 @@ export default function Home() {
             <h2>About</h2>
 
             <p>
-              CS major at the University of Pittsburgh. I TA and peer tutor for
-              Data Structures &amp; Algorithms, and I am a 2x Executive Director of{' '}
+              CS major at the University of Pittsburgh. I TA and peer tutor for Data Structures
+              &amp; Algorithms, and I am a 2x Executive Director of{" "}
               <a href="https://steelhacks.org/" target="_blank" rel="noopener noreferrer">
                 SteelHacks
-              </a>.{' '}
-              I am also a former officer of
-              {' '}
+              </a>
+              . I am also a former officer of{" "}
               <a href="https://pittcsc.org/" target="_blank" rel="noopener noreferrer">
                 PittCSC
-              </a>.
+              </a>
+              .
             </p>
 
             <p>
-              I grew up loving technology, started coding in high school, and eventually
-              followed that interest into computer science in college. Since then, I have
-              especially enjoyed working in security and safety, including work at the{' '}
+              I grew up loving technology, started coding in high school, and eventually followed
+              that interest into computer science in college. Since then, I have especially enjoyed
+              working in security and safety, including work at the{" "}
               <a href="https://www.nfl.com/" target="_blank" rel="noopener noreferrer">
-               NFL
-              </a>
-              {' '}and{' '}
+                NFL
+              </a>{" "}
+              and{" "}
               <a href="https://character.ai/" target="_blank" rel="noopener noreferrer">
                 Character.AI
-              </a>.
+              </a>
+              .
             </p>
             <div className="offclock-heading">
               <h3>In my free time</h3>
@@ -101,44 +103,56 @@ export default function Home() {
               <figure className="life-photo">
                 <div className="life-photo-frame life-photo-snowboard">
                   <img
-                    src="./assets/snowboarding.jpg"
+                    src="./assets/snowboarding-800.webp"
+                    srcSet="./assets/snowboarding-400.webp 400w, ./assets/snowboarding-800.webp 800w"
+                    sizes={galleryImageSizes}
                     alt="Snowboarding on a sunny winter day"
-                    width="2880"
-                    height="2160"
+                    width="800"
+                    height="600"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </figure>
               <figure className="life-photo life-photo-hike">
                 <div className="life-photo-frame">
                   <img
-                    src="./assets/hiking.jpg"
+                    src="./assets/hiking-800.webp"
+                    srcSet="./assets/hiking-400.webp 400w, ./assets/hiking-800.webp 800w"
+                    sizes={galleryImageSizes}
                     alt="Hiking a forest trail with mountains in the distance"
-                    width="2160"
-                    height="2880"
+                    width="800"
+                    height="1067"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </figure>
               <figure className="life-photo life-photo-mountain">
                 <div className="life-photo-frame">
                   <img
-                    src="./assets/mountain.jpg"
+                    src="./assets/mountain-800.webp"
+                    srcSet="./assets/mountain-400.webp 400w, ./assets/mountain-800.webp 800w"
+                    sizes={galleryImageSizes}
                     alt="A mountain view during a hike"
-                    width="2880"
-                    height="2160"
+                    width="800"
+                    height="600"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </figure>
               <figure className="life-photo">
                 <div className="life-photo-frame">
                   <img
-                    src="./assets/soccer.jpg"
+                    src="./assets/soccer-800.webp"
+                    srcSet="./assets/soccer-400.webp 400w, ./assets/soccer-800.webp 800w"
+                    sizes={galleryImageSizes}
                     alt="My soccer team celebrating with a cup"
-                    width="2880"
-                    height="2160"
+                    width="800"
+                    height="600"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </figure>
@@ -154,12 +168,8 @@ export default function Home() {
                 <span className="leader"></span>
                 <span className="dates">Summer 2026 - present</span>
               </div>
-              <p className="role">
-                Software Engineer Intern | Trust &amp; Safety
-              </p>
-              <p>
-                Product and Operational Safety
-              </p>
+              <p className="role">Software Engineer Intern | Trust &amp; Safety</p>
+              <p>Product and Operational Safety</p>
             </article>
 
             <article className="job">
@@ -169,9 +179,7 @@ export default function Home() {
                 <span className="dates">Summer 2025</span>
               </div>
               <p className="role">Software Engineer Intern | InfoSec</p>
-              <p>
-                Security Operations
-              </p>
+              <p>Security Operations</p>
             </article>
 
             <article className="job">
@@ -181,9 +189,7 @@ export default function Home() {
                 <span className="dates">Spring 2025</span>
               </div>
               <p className="role">Software Engineer Intern</p>
-              <p>
-                Medical Education Platform
-              </p>
+              <p>Medical Education Platform</p>
             </article>
 
             <article className="job">
@@ -192,43 +198,29 @@ export default function Home() {
                 <span className="leader"></span>
                 <span className="dates">Fall 2025 - present</span>
               </div>
-              <p className="role">
-                Teaching Assistant
-              </p>
-              <p>
-                Data Structures and Algorithms
-              </p>
+              <p className="role">Teaching Assistant</p>
+              <p>Data Structures and Algorithms</p>
             </article>
           </section>
 
           <section id="projects">
             <h2>Projects</h2>
-            <a
-              className="project-card"
-              href="https://github.com/denystsinyk/worthit"
-            >
+            <a className="project-card" href="https://github.com/denystsinyk/worthit">
               <span className="project-number">01 /</span>
               <div>
                 <h3>
                   worthit <span aria-hidden="true">↗</span>
                 </h3>
-                <p>
-                  Never miss an AMEX benefit again
-                </p>
+                <p>Never miss an AMEX benefit again</p>
               </div>
             </a>
-            <a
-              className="project-card"
-              href="https://github.com/denystsinyk/Pitt2PIT"
-            >
+            <a className="project-card" href="https://github.com/denystsinyk/Pitt2PIT">
               <span className="project-number">02 /</span>
               <div>
                 <h3>
                   Pitt2PIT <span aria-hidden="true">↗</span>
                 </h3>
-                <p>
-                  Cheap rides for Pitt Students
-                </p>
+                <p>Cheap rides for Pitt Students</p>
               </div>
             </a>
             <p className="more-projects">
@@ -247,25 +239,18 @@ export default function Home() {
               </li>
               <li>
                 <span className="label">github</span>
-                <a href="https://github.com/denystsinyk">
-                  github.com/denystsinyk
-                </a>
+                <a href="https://github.com/denystsinyk">github.com/denystsinyk</a>
               </li>
               <li>
                 <span className="label">linkedin</span>
-                <a href="https://www.linkedin.com/in/denystsinyk">
-                  linkedin.com/in/denystsinyk
-                </a>
+                <a href="https://www.linkedin.com/in/denystsinyk">linkedin.com/in/denystsinyk</a>
               </li>
             </ul>
           </section>
-
         </main>
         <footer>
           <div className="foot-row">
-            <span>
-              &copy; {new Date().getFullYear()} Denys Tsinyk
-            </span>
+            <span>&copy; {new Date().getFullYear()} Denys Tsinyk</span>
             <div className="footer-controls">
               <button id="weather-toggle" aria-pressed="false">
                 pause weather
